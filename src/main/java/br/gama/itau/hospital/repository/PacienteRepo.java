@@ -6,5 +6,8 @@ import br.gama.itau.hospital.model.Paciente;
 
 public interface PacienteRepo extends CrudRepository <Paciente, Long>{
 
+    Paciente findByNome(String nome);
+
+    Paciente findByCpf(String cpf);
     
 }
