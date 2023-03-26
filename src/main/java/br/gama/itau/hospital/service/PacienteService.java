@@ -1,5 +1,7 @@
 package br.gama.itau.hospital.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.gama.itau.hospital.model.Paciente;
@@ -7,7 +9,7 @@ import br.gama.itau.hospital.repository.PacienteRepo;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor // precisa gerar o construtor com os atributos obrigatórios
+@RequiredArgsConstructor // precisa gerar o construtor com os atributos obrigatórios (definidos como final)
 public class PacienteService {
 
     // Outras opções de injeção de dependência, sem usar Autowired
@@ -20,7 +22,15 @@ public class PacienteService {
     public Paciente getByCpf(String cpf) {
         return repo.findByCpf(cpf);
     }
+
+    public List<Paciente> getAll() {
+
+        return (List<Paciente>) repo.findAll();
+
+    }
+
+
   
-    
+
 
 }
