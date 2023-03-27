@@ -1,9 +1,11 @@
 package br.gama.itau.hospital.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.gama.itau.hospital.dto.PacienteDTO;
 import br.gama.itau.hospital.model.Paciente;
 import br.gama.itau.hospital.repository.PacienteRepo;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,19 @@ public class PacienteService {
     public List<Paciente> getAll() {
 
         return (List<Paciente>) repo.findAll();
+
+    }
+
+    public List<PacienteDTO> getAllDTO() {
+
+        List<Paciente> listaPaciente = (List<Paciente>) repo.findAll(); //  eu tenho uma lista de paciente
+        List<PacienteDTO> listaPacienteDTO = new ArrayList<> (); // gerar uma ilsta de pacienteDto
+
+        for (Paciente paciente : listaPaciente) { // para cada paciente da minha lista eu quero add na minha lista DTO
+            listaPacienteDTO.add(new PacienteDTO(paciente)); // estou transportando todos os pacientes para uma nova lista
+        }
+
+        return listaPacienteDTO;
 
     }
 

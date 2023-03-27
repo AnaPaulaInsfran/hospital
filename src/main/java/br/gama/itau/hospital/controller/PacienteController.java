@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.gama.itau.hospital.model.Paciente;
+import br.gama.itau.hospital.dto.PacienteDTO;
 import br.gama.itau.hospital.service.PacienteService;
 
 @RestController
@@ -20,10 +20,10 @@ public class PacienteController {
 
     @GetMapping // anotação para dizer q este método getAll vai ser chamado toda ver
     // que na URL eu colocar /paciente 
-    public ResponseEntity<List<Paciente>> getAll() { // ele vai no service e chama o getAll que retorna uma
+    public ResponseEntity<List<PacienteDTO>> getAll() { // ele vai no service e chama o getAll que retorna uma
         // lista de pacientes e devolvo na resposta junto com cód 200 - sucesso
 
-        return ResponseEntity.ok(service.getAll());
+        return ResponseEntity.ok(service.getAllDTO());
     }
 
     
